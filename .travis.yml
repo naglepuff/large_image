@@ -1,11 +1,6 @@
 sudo: false
 dist: xenial
 language: python
-python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
-  - "3.7"
 services:
   - mongodb
   - memcached
@@ -13,13 +8,72 @@ addons:
   apt:
     packages:
     - rabbitmq-server
+before_install:
+  # If the last tag is more than 50 commits away, we need to fetch more for
+  # the scm_version module to determine the version.
+  - git fetch --depth=1000
+matrix:
+  include:
+  - os: linux
+    python: "2.7"
+  - os: linux
+    python: "3.5"
+  - os: linux
+    python: "3.6"
+  - os: linux
+    python: "3.7"
+  - os: osx
+    # osx_image: xcode10.3
+    language: generic
+    env: TOXENV=py37
+    addons:
+      homebrew:
+        update: true
+        packages:
+        - memcached
+        - libmemcached
+        - rabbitmq
+        - node
+        - libtiff
+        - openslide
+        - gdal
+        - mapnik
+        - vips
+        - proj
+        # needed for python-mapnik
+        # - boost-python3
+    before_install:
+      - brew unlink python@2
+      - brew link python3
+      - pip3 install virtualenv
+      - virtualenv -p python3 ~/venv
+      - source ~/venv/bin/activate
+      - which python
+      - python --version
+      - git fetch --depth=1000
+      # Don't install or test mapnik source until we figure out how to install
+      # python-mapnik in travis.
+      - sed -i '' 's/-e sources\/mapnik/# -e sources\/mapnik/g' requirements-dev.txt
+      # - echo 'git+https://github.com/manthey/pylibtiff@wheel-support#egg=libtiff' >> requirements-dev.txt
+      - sed -i '' '1i\'$'\n''git+https://github.com/manthey/pylibtiff@wheel-support#egg=libtiff'$'\n' requirements-dev.txt
+      - cat requirements-dev.txt
+      - rm test/test_source_mapnik.py
+      # - export BOOST_PYTHON_LIB=boost_python37
+      # - pip install git+https://github.com/mapnik/python-mapnik
+      - curl https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-4.2.0.tgz -o mongodb.tgz
+      - mkdir mongodb
+      - tar -zxvf mongodb.tgz -C mongodb --strip-components 1
+      - mkdir -p `pwd`/data/db
+      - mongodb/bin/mongod --dbpath `pwd`/data/db --logpath `pwd`/mongodb.log --fork
+      - brew services start memcached
+      - brew services start rabbitmq
+      - for try in {1..30}; do /usr/local/sbin/rabbitmqctl status && break; sleep 1; done
+      - /usr/local/sbin/rabbitmqctl trace_on
+      - npm install -g npm
 install:
   - pip install --upgrade pip
   - pip install --upgrade virtualenv
   - pip install tox-travis
-  # If the last tag is more than 50 commits away, we need to fetch more for
-  # the scm_version module to determine the version.
-  - git fetch --depth=1000
 script:
   # Piping through cat does less buffering of the output but can consume the
   # exit code
@@ -28,3 +82,9 @@ after_success:
   - pip install codecov
   - codecov --disable search pycov gcov --file build/test/coverage/py_coverage.xml build/test/coverage/cobertura-coverage.xml
   - if [ ${TRAVIS_PYTHON_VERSION:0:3} == "3.7" ]; then pip install travis-sphinx; travis-sphinx -o docs/build -v deploy -b sphinx,master; fi
+
+after_failure:
+  - PATH="/Users/travis/build/girder/large_image/build/tox/py37/bin:$PATH" pip freeze
+  # - PATH="/Users/travis/build/girder/large_image/build/tox/py37/bin:$PATH" python -c 'import large_image, pprint;ts = large_image.getTileSource("/Users/travis/build/girder/large_image/build/tox/externaldata/sample_image.ptif");pprint.pprint(ts.getMetadata());ti = ts.getSingleTile(tile_size=dict(width=1000, height=1000), scale=dict(magnification=20), tile_position=100);pprint.pprint(ti);print(ti["tile"].size);print(ti["tile"][:4,:4]);print(ts)'
+  # - ls -alR /Users/travis/build/girder/large_image/build/tox
+  - find /usr/local/var/log/rabbitmq -exec cat {} \;
