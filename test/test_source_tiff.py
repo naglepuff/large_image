@@ -671,6 +671,11 @@ def testHistogram():
     assert hist['histogram'][0]['samples'] == 2801664
     assert hist['histogram'][0]['hist'][128] == pytest.approx(6.39e-5, 0.01)
 
+    hist = source.histogram(bins='auto', output={'maxWidth': 2048}, resample=False)
+    assert hist['histogram'][0]['samples'] == 2801664
+    assert len(hist['histogram'][0]['hist']) == 5161
+    assert hist['histogram'][0]['hist'][128] == 0
+
 
 def testSingleTileIteratorResample():
     imagePath = datastore.fetch('sample_image.ptif')

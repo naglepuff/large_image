@@ -1397,9 +1397,10 @@ class TileSource:
         """
         kwargs = kwargs.copy()
         histRange = kwargs.pop('range', None)
-        results = None
-        for tile in self.tileIterator(format=TILE_FORMAT_NUMPY, *args, **kwargs):
-            tile = tile['tile']
+        results = {}
+        maxbins = None
+        for tileRecord in self.tileIterator(format=TILE_FORMAT_NUMPY, *args, **kwargs):
+            tile = tileRecord['tile']
             if dtype is not None and tile.dtype != dtype:
                 if tile.dtype == numpy.uint8 and dtype == numpy.uint16:
                     tile = numpy.array(tile, dtype=numpy.uint16) * 257
@@ -1409,11 +1410,9 @@ class TileSource:
                 numpy.amin(tile[:, :, idx]) for idx in range(tile.shape[2])], tile.dtype)
             tilemax = numpy.array([
                 numpy.amax(tile[:, :, idx]) for idx in range(tile.shape[2])], tile.dtype)
-            if results is None:
-                results = {'min': tilemin, 'max': tilemax}
-            results['min'] = numpy.minimum(results['min'], tilemin)
-            results['max'] = numpy.maximum(results['max'], tilemax)
-        if results is None or onlyMinMax:
+            results['min'] = numpy.minimum(results.get('min', tilemin), tilemin)
+            results['max'] = numpy.maximum(results.get('max', tilemax), tilemax)
+        if 'min' not in results or onlyMinMax:
             return results
         results['histogram'] = [{
             'min': results['min'][idx],
@@ -1423,8 +1422,8 @@ class TileSource:
             'hist': None,
             'bin_edges': None
         } for idx in range(len(results['min']))]
-        for tile in self.tileIterator(format=TILE_FORMAT_NUMPY, *args, **kwargs):
-            tile = tile['tile']
+        for tileRecord in self.tileIterator(format=TILE_FORMAT_NUMPY, *args, **kwargs):
+            tile = tileRecord['tile']
             if dtype is not None and tile.dtype != dtype:
                 if tile.dtype == numpy.uint8 and dtype == numpy.uint16:
                     tile = numpy.array(tile, dtype=numpy.uint16) * 257
@@ -1437,14 +1436,19 @@ class TileSource:
                 if entry['hist'] is None:
                     entry['hist'] = hist
                     entry['bin_edges'] = bin_edges
+                elif not str(bin).isdigit() and (
+                        hist.shape != entry['hist'].shape or maxbins is not None):
+                    maxbins = max(entry['hist'].shape[0], hist.shape[0], maxbins or hist.shape[0])
                 else:
                     entry['hist'] += hist
-        for idx in range(len(results['min'])):
-            entry = results['histogram'][idx]
-            if entry['hist'] is not None:
-                entry['samples'] = numpy.sum(entry['hist'])
-                if density:
-                    entry['hist'] = entry['hist'].astype(float) / entry['samples']
+        if maxbins is not None:
+            return self.histogram(
+                dtype=dtype, onlyMinMax=onlyMinMax, bins=maxbins,
+                density=density, *args, **kwargs)
+        for entry in (entry for entry in results['histogram'] if entry['hist'] is not None):
+            entry['samples'] = numpy.sum(entry['hist'])
+            if density:
+                entry['hist'] = entry['hist'].astype(float) / entry['samples']
         return results
 
     def _unstyledClassKey(self):

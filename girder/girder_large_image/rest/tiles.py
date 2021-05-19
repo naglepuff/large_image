@@ -302,6 +302,8 @@ class TilesItemResource(ItemResource):
                 if dataType == 'boolOrInt':
                     dataType = bool if str(params[key]).lower() in (
                         'true', 'false', 'on', 'off', 'yes', 'no') else int
+                elif dataType == 'intOrString':
+                    dataType = int if str(params[key]).isdigit() else str
                 try:
                     if dataType is bool:
                         results[key] = str(params[key]).lower() in (
@@ -917,8 +919,9 @@ class TilesItemResource(ItemResource):
         .param('frame', 'For multiframe images, the 0-based frame number.  '
                'This is ignored on non-multiframe images.', required=False,
                dataType='int')
-        .param('bins', 'The number of bins in the histogram.',
-               default=256, required=False, dataType='int')
+        .param('bins', 'The number of bins in the histogram.  This can be one '
+               'of the string values numpy accepts.',
+               default=256, required=False)
         .param('rangeMin', 'The minimum value in the histogram.  Defaults to '
                'the minimum value in the image.',
                required=False, dataType='float')
@@ -957,7 +960,7 @@ class TilesItemResource(ItemResource):
             ('tiffCompression', str),
             ('style', str),
             ('resample', 'boolOrInt'),
-            ('bins', int),
+            ('bins', 'intOrString'),
             ('rangeMin', int),
             ('rangeMax', int),
             ('density', bool),

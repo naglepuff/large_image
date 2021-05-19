@@ -1181,6 +1181,25 @@ def testTilesHistogramWithRange(server, admin, fsAssetstore):
 
 @pytest.mark.usefixtures('unbindLargeImage')
 @pytest.mark.plugin('large_image')
+def testTilesHistogramWithBins(server, admin, fsAssetstore):
+    file = utilities.uploadExternalFile(
+        'sample_image.ptif', admin, fsAssetstore)
+    itemId = str(file['itemId'])
+    resp = server.request(
+        path='/item/%s/tiles/histogram' % itemId,
+        params={'width': 2048, 'height': 2048, 'resample': False, 'bins': 20})
+    assert len(resp.json) == 3
+    assert len(resp.json[0]['hist']) == 20
+
+    resp = server.request(
+        path='/item/%s/tiles/histogram' % itemId,
+        params={'width': 2048, 'height': 2048, 'resample': False, 'bins': 'auto'})
+    assert len(resp.json) == 3
+    assert len(resp.json[0]['hist']) == 5161
+
+
+@pytest.mark.usefixtures('unbindLargeImage')
+@pytest.mark.plugin('large_image')
 def testTilesInternalMetadata(server, admin, fsAssetstore):
     file = utilities.uploadExternalFile(
         'sample_image.ptif', admin, fsAssetstore)
