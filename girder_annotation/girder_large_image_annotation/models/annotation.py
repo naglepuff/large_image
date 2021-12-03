@@ -470,6 +470,44 @@ class AnnotationSchema:
         ]
     }
 
+    annotationOverlaySchema = {
+        '$schema': 'http://json-schema.org/schema#',
+        'type': 'object',
+        'properties': {
+            'girderId': {
+                'type': 'string',
+                'description': 'Girder item ID containing the large image to '
+                               'overlay.'
+            },
+            'opacity': {
+                'type': 'number',
+                'minimum': 0,
+                'maximum': 1,
+                'description': 'Default opacity for an image overlay. Must be '
+                               'between 0 and 1. Default is 1.'
+            },
+            'location': {
+                'type': 'object',
+                'description': 'Position (upper-left, width, and height) of '
+                               'the overlay.',
+                'properties': {
+                    'position': coordSchema,
+                    'width': {
+                        'type': 'number',
+                        'minimum': 0
+                    },
+                    'height': {
+                        'type': 'number',
+                        'minimum': 0
+                    }
+                }
+            }
+        },
+        'additionalProperties': False,
+        'description': 'An image to overlay onto another as an '
+                       'annotation.'
+    }
+
     annotationSchema = {
         '$schema': 'http://json-schema.org/schema#',
         'id': '/girder/plugins/large_image/models/annotation',
