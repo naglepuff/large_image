@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Large Image &mdash; large_image  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tile Source Options" href="tilesource_options.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> large_image
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tilesource_options.html">Tile Source Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_conversion.html">Image Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Upgrading from Previous Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image/modules.html">large_image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_bioformats/modules.html">large_image_source_bioformats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_deepzoom/modules.html">large_image_source_deepzoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_dummy/modules.html">large_image_source_dummy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_gdal/modules.html">large_image_source_gdal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_mapnik/modules.html">large_image_source_mapnik</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_nd2/modules.html">large_image_source_nd2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_ometiff/modules.html">large_image_source_ometiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_openjpeg/modules.html">large_image_source_openjpeg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_openslide/modules.html">large_image_source_openslide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_pil/modules.html">large_image_source_pil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_test/modules.html">large_image_source_test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_tiff/modules.html">large_image_source_tiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_converter/modules.html">large_image_converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_tasks/modules.html">large_image_tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="girder_large_image/modules.html">girder_large_image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="girder_large_image_annotation/modules.html">girder_large_image_annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotation Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developer Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">large_image</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Large Image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="large-image">
+<h1>Large Image<a class="headerlink" href="#large-image" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://circleci.com/gh/girder/large_image"><img alt="Build Status" src="https://img.shields.io/circleci/build/github/girder/large_image.svg" /></a> <a class="reference external" href="https://codecov.io/github/girder/large_image?branch=master"><img alt="codecov.io" src="https://img.shields.io/codecov/c/github/girder/large_image.svg" /></a> <a class="reference external" href="https://raw.githubusercontent.com/girder/large_image/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache%202-blue.svg" /></a> <a class="reference external" href="https://zenodo.org/badge/latestdoi/45569214"><img alt="doi-badge" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4723355-blue" /></a> <a class="reference external" href="https://pypi.org/project/large-image/"><img alt="pypi-badge" src="https://img.shields.io/pypi/v/large-image.svg?logo=python&amp;logoColor=white" /></a></p>
+<p><em>Python modules to work with large, multiresolution images.</em></p>
+<p>Large Image is developed and maintained by the Data &amp; Analytics group at <a class="reference external" href="https://kitware.com">Kitware, Inc</a>. for processing large geospatial and medical images. This provides the backbone for several of our image analysis platforms including <a class="reference external" href="https://github.com/ResonantGeoData/ResonantGeoData">Resonant GeoData</a>, <a class="reference external" href="https://github.com/DigitalSlideArchive/HistomicsUI">HistomicsUI</a>, and <a class="reference external" href="https://digitalslidearchive.github.io/digital_slide_archive/">the Digital Slide Archive</a>.</p>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Tile serving made easy</p></li>
+<li><p>Supports a wide variety of geospatial and medical image formats</p></li>
+<li><p>Convert to tiled Cloud Optimized (Geo)Tiffs (also known as pyramidal tiffs)</p></li>
+<li><p>Python methods for retiling or accessing regions of images efficiently</p></li>
+</ul>
+</section>
+<section id="quick-installation-via-pip">
+<h2>Quick Installation via pip<a class="headerlink" href="#quick-installation-via-pip" title="Permalink to this headline">¶</a></h2>
+<p>In addition to installing the <code class="docutils literal notranslate"><span class="pre">large-image</span></code> package, you’ll need at least one tile source (a <code class="docutils literal notranslate"><span class="pre">large-image-source-xxx</span></code> package).   You can install everything from the main project with one of these commands:</p>
+<ul class="simple">
+<li><p>Install all tile sources and all Girder plugins on linux: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">large-image[all]</span> <span class="pre">girder-large-image-annotation[tasks]</span> <span class="pre">--find-links</span> <span class="pre">https://girder.github.io/large_image_wheels</span></code></p></li>
+<li><p>Install all tile sources on linux: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">large-image[all]</span> <span class="pre">--find-links</span> <span class="pre">https://girder.github.io/large_image_wheels</span></code></p></li>
+</ul>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>Large Image consists of several Python modules designed to work together.  These include:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image</span></code>: The core module.
+You can specify extras_require of the name of any tile source included with this repository, <code class="docutils literal notranslate"><span class="pre">sources</span></code> for all of the tile sources in the repository, <code class="docutils literal notranslate"><span class="pre">memcached</span></code> for using memcached for tile caching, or <code class="docutils literal notranslate"><span class="pre">all</span></code> for all of the tile sources and memcached.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-converter</span></code>: A utility for using pyvips and other libraries to convert images into pyramidal tiff files that can be read efficiently by large_image.</p></li>
+<li><p>Tile sources:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-tiff</span></code>: A tile source for reading pyramidal tiff files in common compression formats.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-openslide</span></code>: A tile source using the OpenSlide library.  This works with svs, ndpi, Mirax, tiff, vms, and other file formats.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-ometiff</span></code>: A tile source using the tiff library that can handle some multi-frame OMETiff files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-pil</span></code>: A tile source for small images via the Python Imaging Library (Pillow).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-gdal</span></code>: A tile source for reading geotiff files via GDAL.  This handles source data with more complex transforms than the mapnik tile source.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-mapnik</span></code>: A tile source for reading geotiff and netcdf files via Mapnik and GDAL.  This handles more vector issues than the gdal tile source.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-openjpeg</span></code>: A tile source using the Glymur library to read jp2 (JPEG 2000) files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-nd2</span></code>: A tile source for reading nd2 (NIS Element) images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-bioformats</span></code>: A tile source for reading any file handled by the Java Bioformats library.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-deepzoom</span></code>: A tile source for reading Deepzoom tiles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-test</span></code>: A tile source that generates test tiles, including a simple fractal pattern.  Useful for testing extreme zoom levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-source-dummy</span></code>: A tile source that does nothing.</p></li>
+</ul>
+<p>Most tile sources can be used with girder-large-image.</p>
+</li>
+<li><p>As a Girder plugin:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">girder-large-image</span></code>: Large Image as a <a class="reference external" href="https://github.com/girder/girder">Girder</a> 3.x plugin.
+You can specify extras_require of <code class="docutils literal notranslate"><span class="pre">tasks</span></code> to install a Girder Worker task that can convert otherwise unreadable images to pyramidal tiff files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">girder-large-image-annotation</span></code>: Annotations for large images as a <a class="reference external" href="https://github.com/girder/girder">Girder</a> 3.x plugin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large-image-tasks</span></code>: A utility for running the converter via Girder Worker.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="developer-installation">
+<h2>Developer Installation<a class="headerlink" href="#developer-installation" title="Permalink to this headline">¶</a></h2>
+<p>To install all packages from source, clone the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">girder</span><span class="o">/</span><span class="n">large_image</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">large_image</span>
+</pre></div>
+</div>
+<p>Install all packages and dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>If you aren’t developing with Girder 3, you can skip installing those components.  Use <code class="docutils literal notranslate"><span class="pre">requirements-dev-core.txt</span></code> instead of <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">core</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tile-source-prerequisites">
+<h1>Tile source prerequisites<a class="headerlink" href="#tile-source-prerequisites" title="Permalink to this headline">¶</a></h1>
+<p>Many tile sources have complex prerequisites.  These can be installed directly using your system’s package manager or from some prebuilt Python wheels for Linux.  The prebuilt wheels are not official packages, but they can be used by instructing pip to use them by preference:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">girder</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">large_image_wheels</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tilesource_options.html">Tile Source Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tilesource_options.html#format">Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tilesource_options.html#encoding">Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tilesource_options.html#edges">Edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tilesource_options.html#style">Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_options.html">Configuration Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_options.html#configuration-from-python">Configuration from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_options.html#configuration-within-the-girder-plugin">Configuration within the Girder Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_options.html#logging-from-python">Logging from Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_conversion.html">Image Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Upgrading from Previous Versions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html#migration-from-girder-2-to-girder-3">Migration from Girder 2 to Girder 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image/modules.html">large_image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image/large_image.html">large_image package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_bioformats/modules.html">large_image_source_bioformats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_bioformats/large_image_source_bioformats.html">large_image_source_bioformats package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_deepzoom/modules.html">large_image_source_deepzoom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_deepzoom/large_image_source_deepzoom.html">large_image_source_deepzoom package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_dummy/modules.html">large_image_source_dummy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_dummy/large_image_source_dummy.html">large_image_source_dummy package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_gdal/modules.html">large_image_source_gdal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_gdal/large_image_source_gdal.html">large_image_source_gdal package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_mapnik/modules.html">large_image_source_mapnik</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_mapnik/large_image_source_mapnik.html">large_image_source_mapnik package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_nd2/modules.html">large_image_source_nd2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_nd2/large_image_source_nd2.html">large_image_source_nd2 package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_ometiff/modules.html">large_image_source_ometiff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_ometiff/large_image_source_ometiff.html">large_image_source_ometiff package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_openjpeg/modules.html">large_image_source_openjpeg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_openjpeg/large_image_source_openjpeg.html">large_image_source_openjpeg package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_openslide/modules.html">large_image_source_openslide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_openslide/large_image_source_openslide.html">large_image_source_openslide package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_pil/modules.html">large_image_source_pil</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_pil/large_image_source_pil.html">large_image_source_pil package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_test/modules.html">large_image_source_test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_test/large_image_source_test.html">large_image_source_test package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_source_tiff/modules.html">large_image_source_tiff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_source_tiff/large_image_source_tiff.html">large_image_source_tiff package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_converter/modules.html">large_image_converter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_converter/large_image_converter.html">large_image_converter package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="large_image_tasks/modules.html">large_image_tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="large_image_tasks/large_image_tasks.html">large_image_tasks package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="girder_large_image/modules.html">girder_large_image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="girder_large_image/girder_large_image.html">girder_large_image package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="girder_large_image_annotation/modules.html">girder_large_image_annotation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="girder_large_image_annotation/girder_large_image_annotation.html">girder_large_image_annotation package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotation Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annotations.html#elements">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotations.html#component-values">Component Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotations.html#a-sample-annotation">A sample annotation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#running-tests">Running Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#development-environment">Development Environment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tilesource_options.html" class="btn btn-neutral float-right" title="Tile Source Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Kitware, Inc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
